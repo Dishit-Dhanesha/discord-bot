@@ -11,6 +11,32 @@ const sadDeclarations = ["sad" , "depressed" , "unhappy" , "angry"]
 
 const encouragements = ["Cheer up!" , "Hang in there." , "You are a great person / bot!"]
 
+//get All the encouragements in an array
+db.get("encouragements").then(encouragements => {
+    if(!encouragements || encouragements.length < 1){
+      db.set("encouragements", startErencouragements)
+    }
+})
+
+// update Encouragement
+function updatencouragements(encoiragingMessage){
+    db.get("encouragements").then(encouragements =>{
+        encouragements.push([encoiragingMessage])
+        db.set("encouragements", encouragements)
+    })
+}
+
+// Delete Encouragement in an array
+function deletencouragement(index){
+    db.get("encouragements").then(encouragements =>{
+       if(encouragements.length > index){
+        encouragements.slice(index , 1)
+        db.set("encouregements", encouregements)
+       }
+        db.set("encouragements", encouragements)
+    })
+}
+
 
 function getQuote(){
     return fetch("https://zenquotes.io/api/random").then(res =>{
