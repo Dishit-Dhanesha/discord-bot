@@ -9,12 +9,12 @@ const db = new Database();
 
 const sadDeclarations = ["sad" , "depressed" , "unhappy" , "angry"]
 
-const encouragements = ["Cheer up!" , "Hang in there." , "You are a great person / bot!"]
+const starterEncouragements = ["Cheer up!" , "Hang in there." , "You are a great person / bot!"]
 
 //get All the encouragements in an array
 db.get("encouragements").then(encouragements => {
     if(!encouragements || encouragements.length < 1){
-      db.set("encouragements", startErencouragements)
+      db.set("encouragements", starterEncouragements)
     }
 })
 
@@ -95,5 +95,5 @@ client.on("message", msg =>{
         }
       }
 })
-
+keepAlive()
 client.login(process.env.TOKEN);
