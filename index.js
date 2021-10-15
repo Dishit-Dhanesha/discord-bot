@@ -37,7 +37,7 @@ function deletencouragement(index){
     })
 }
 
-
+//get quote from api data
 function getQuote(){
     return fetch("https://zenquotes.io/api/random").then(res =>{
         return res.json();
@@ -64,6 +64,25 @@ client.on("message", msg =>{
             msg.reply(encouragment);
         })
     }
+
+    //condition to add new data
+    if(msg.content.startsWith("$new")){
+        encoiragingMessage = msg.content.split("$new")[1];
+        updatencouragements(encoiragingMessage)
+        msg.channel.send("New encouraging message Added")
+    }
+    //condition to delete data
+    if(msg.content.startsWith("$del")){
+        index = parseInt(msg.content.split("$del")[1]);
+        deletencouragement(index)
+        msg.channel.send("New encouraging message Deleted")
+    }
+    //condition to list all the data
+    if (msg.content.startsWith("$list")) {
+        db.get("encouragements").then(encouragements => {
+          msg.channel.send(encouragements)
+        })
+      }
 })
 
 client.login(process.env.TOKEN);
