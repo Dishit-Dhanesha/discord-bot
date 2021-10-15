@@ -83,6 +83,17 @@ client.on("message", msg =>{
           msg.channel.send(encouragements)
         })
       }
+      if (msg.content.startsWith("$responding")) {
+        value = msg.content.split("$responding ")[1]
+    
+        if (value.toLowerCase() == "true") {
+          db.set("responding", true)
+          msg.channel.send("Responding is on.")
+        } else {
+           db.set("responding", false)
+          msg.channel.send("Responding is off.")     
+        }
+      }
 })
 
 client.login(process.env.TOKEN);
