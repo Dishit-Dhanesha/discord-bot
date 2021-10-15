@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Test Discord Bot",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/Dishit-Dhanesha/discord-bot#readme",
   "dependencies": {
-    "discord.js": "^13.2.0",
-    "dotenv": "^10.0.0"
+    "@replit/database": "^2.0.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^10.0.0",
+    "node-fetch": "^2.6.1",
+    "express": "^4.17.1",
+    "discord": "^0.8.2"
   }
 }
